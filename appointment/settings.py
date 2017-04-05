@@ -36,6 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'appointments',
+    'crispy_forms',
+    'multiselectfield',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,9 +52,9 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'appointment.urls'
-
+LOGIN_REDIRECT_URL = 'home'
 WSGI_APPLICATION = 'appointment.wsgi.application'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
