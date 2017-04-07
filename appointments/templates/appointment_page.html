@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+{%block content%}
+<form action="/start_page/save/" method="post">
+  {% csrf_token %}
+  <div class="form-group {% if errors.choosed_date %}has-error{% endif %}">
+    <span class="label label-success">Choose Date:</span>
+    <input type="radio" name="choosed_date" id="choosed_date" value="{{ choosed_event.start_date}}">{{ choosed_event.start_date}}<br>
+    <span class="help-block">{{ errors.choosed_date }}</span>
+  </div>
+<label class="label label-success">Choose Time:</label>
+{%for val in choosed_event.selected_choices%}
+<div class="form-group {% if errors.choosed_time %}has-error{% endif %}">
+
+    <input type="radio" name="choosed_time" id="choosed_time" value="date" checked> {{val }}<br>
+    <span class="help-block">{{ errors.choosed_time }}</span>
+  </div>
+    {%endfor%}
+    <div class="form-group {% if errors.email %}has-error{% endif %}">
+  Email:<input type='email' name='email' id="email" value=''><br>
+  <span class="help-block">{{ errors.email }}</span>
+</div>
+  <div class="form-group {% if errors.fullname %}has-error{% endif %}">
+  Name  <input type='text' name='fullname' id='fullname' value='name'><br>
+  <span class="help-block">{{ errors.fullname }}</span>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+  <input type="submit" value="Submit">
+  <a  href="{% url "start_page" %}">
+  <input type='button' value="Cancel">
+
+</div>
+  </form>
+
+{%endblock content%}
